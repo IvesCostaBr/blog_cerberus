@@ -1,0 +1,9 @@
+{% extends "base.html"%}
+
+{%  block main %}
+<div class="container">
+    {% for obj in publication_list %}
+    {{ obj.title }}<br>
+    {% endfor %}
+</div>
+{% endblock %}

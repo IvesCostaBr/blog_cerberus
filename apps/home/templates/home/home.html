@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block title %} Home | CBS Forum {% endblock %}
+
+
+{% block main %}
+<h3>Minha Home Page</h3>
+<a href="{% url 'pub_create'  %}" >Criar Publicação</a>
+<a href="{% url 'pub_list' %}" >Lista De pubicações</a>
+{% endblock %}
