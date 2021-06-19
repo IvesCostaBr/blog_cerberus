@@ -8,6 +8,13 @@ class RegisterForm(forms.Form):
     widget=forms.TextInput(
         attrs={'class': 'form-control'}
     ))
+    
+    photo = forms.FileField(
+        label="Photo",
+        widget=forms.FileInput(
+            attrs={'class': 'form-control'}
+        )
+    )
 
     email = forms.EmailField(max_length=70,
     widget=forms.EmailInput(attrs={'class': 'form-control',
@@ -25,6 +32,7 @@ class RegisterForm(forms.Form):
         attrs={'class': 'form-control',
         'placeholder':'Confirme sua senha.:'}
     ))
+
 
 
     def cleanPassword(self):

@@ -5,6 +5,7 @@ from apps.publications.models import Publication
 from django.views import View
 from .forms import RegisterForm
 from django.contrib.auth.models import User
+from apps.author.models import Author
 
 
 
@@ -24,7 +25,8 @@ class Register(View):
         return render(self.request, 'registration/sigin.html', {'form':form})
 
     def post(self, request, *args, **kwargs):
-        form = RegisterForm(request.POST)
+        form = RegisterForm(self.request.POST or None, self.request.FILES)
+
         form.is_valid()
         form = form.cleaned_data
         user = User.objects.create_user(
@@ -33,5 +35,8 @@ class Register(View):
             form['password1'],
         )
         user.save()
+        author = Author.objects.create(user=user)
+        author.prfile_photo = form['photo']
+        author.save()
         return redirect('login')
         
