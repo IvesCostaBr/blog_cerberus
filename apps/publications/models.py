@@ -12,7 +12,7 @@ class ComentarioManager(models.Manager):
 
 class Publication(models.Model):
     title = models.CharField(max_length=90, default='[Sem titulo]')
-    bio = models.TextField(max_length=1000)
+    bio = models.TextField(max_length=15000)
     author = models.ForeignKey(Author, blank=True, null=True, on_delete=models.SET_NULL)
     category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.SET_NULL)
     date_create = models.DateField(default=datetime.datetime.today)
