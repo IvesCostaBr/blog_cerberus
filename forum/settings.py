@@ -108,9 +108,10 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATIC_URL = '/static/'
 
+STATIC_URL = '/static/' 
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -119,9 +120,7 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 
-#TODO:Caso a empresa possuir um servidor de arquivo separado podemos simplesente colocar a url absoluta na viariavel MEDIA__ROOT
-MEDIA_ROOT = 'media/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
