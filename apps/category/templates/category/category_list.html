@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %}Lista de Categorias{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h3 style="text-align:center;" >Categoria de Conteudos</h3>
+    <div class="d-flex justify-content-center">
+        
+        {% for c in category_list %}
+        <div class="card" style="width: 10rem; margin-right: 15px;">
+            {% if c.photo %}
+                <img src="{{ c.photo.url }}" class="card-img-top" alt="...">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ c.title }}</h5>
+              <p class="card-text">{{ c.test }}</p>
+              <a href="" class="btn btn-primary">Acessar Posts</a>
+            </div>
+          </div>
+       
+    {% endfor %}
+    </div>
+  
+</div>
+
+{% endblock %}

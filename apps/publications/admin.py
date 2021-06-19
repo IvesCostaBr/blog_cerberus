@@ -1,5 +1,7 @@
-from apps.publications.models import Publication
+from apps.publications import models
 from django.contrib import admin
 
 
-admin.site.register(Publication)
+admin.site.register(models.Publication)
+admin.site.register(models.Comentario)
+

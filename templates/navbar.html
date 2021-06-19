@@ -1,0 +1,26 @@
+
+<div class="container">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="{% url 'homepage' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      <span class="fs-4">Cerberus Forum</span>
+    </a>
+
+    <ul class="nav nav-pills">
+      <li><a href="{% url 'homepage' %}" class="nav-link px-2 link-secondary">Home</a></li>
+      <li><a href="{% url 'category_list' %}" class="nav-link px-2 link-dark">Categorias</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark">Equipe</a></li>
+    </ul>
+
+    {% if not user.is_authenticated  %}
+    <div class="col-md-3 text-end">
+      <button type="button" class="btn btn-outline-success me-2">Login</button>
+      <button type="button" class="btn btn-success">Registra-se</button>
+    </div>
+  {% else %}
+  <div class="col-md-3 text-end">
+    <div class="user" style="background-image:url('https://png.pngtree.com/element_pic/16/11/02/bd886d7ccc6f8dd8db17e841233c9656.jpg')"></div>
+  </div>
+  {% endif  %}
+  </header>
+</div>
