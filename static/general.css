@@ -25,14 +25,29 @@
 
 .c2{
   display:relative;
-  border:solid 1px;
+  border:solid 1px #ced4da;;
   border-radius:3px;
   margin-bottom: 15px;
 }
 
 .c4{
-  width:20px;
-  height:150px;
-  border:solid 1px;
-  border-radius:10px;
+  border:solid 1px #ced4da;;
+  border-radius:3px;
+  width: 600px;
+  margin-top: 40px;
+
+  margin-bottom: 15px;
+}
+
+.comentario {
+  width: 600px;
+  word-wrap: break-word;
+}
+
+.lineSepare {
+  width: 600px;
+
+}
+.category{
+  flex:right;
 }

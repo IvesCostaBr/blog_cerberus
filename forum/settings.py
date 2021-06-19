@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'apps.publications',
     'apps.author',
     'apps.category',
+    'apps.staff',
     'rest_framework',
     'corsheaders',
 ]

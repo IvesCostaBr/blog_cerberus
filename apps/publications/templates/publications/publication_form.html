@@ -3,9 +3,12 @@
 {% block title %} {% endblock %}
 
 {% block main %}
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token  %}
-    {{ form.as_p }}
-    <button type="submit">Postar</button>
-</form>
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token  %}
+        {{ form.as_p }}
+        <button type="submit">Postar</button>
+    </form>
+</div>
+
 {% endblock %}

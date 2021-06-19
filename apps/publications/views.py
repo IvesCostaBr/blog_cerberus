@@ -1,20 +1,23 @@
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls.base import reverse
+from django.core.paginator import Paginator
 from django.views.generic import CreateView, ListView, DetailView
 from .models import Publication, Comentario
 from django.urls import reverse_lazy
 from .forms import ComentarioForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
 class PublicationList(ListView):
     model = Publication
+    paginate_by = 2
 
 
-class CreatePubli(CreateView):
+class CreatePubli(LoginRequiredMixin ,CreateView):
     model = Publication
-    fields = ['title', 'bio']
+    fields = ['title', 'bio', 'category']
     success_url = reverse_lazy('homepage')
 
     def form_valid(self, form):
@@ -24,7 +27,7 @@ class CreatePubli(CreateView):
         return super(CreatePubli, self).form_valid(form)
 
 
-class PublicationDetail(DetailView):
+class PublicationDetail(LoginRequiredMixin, DetailView):
     model = Publication
 
     def post(self, request, *args, **kwargs):
@@ -41,5 +44,6 @@ class PublicationDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = ComentarioForm
-        context['lista_comments'] = Comentario.objects.lastComents()
+        context['last_comments'] = Comentario.objects.lastComents(self.get_object().id)
+        context['pagination'] = Paginator(context['last_comments'],3)
         return context
