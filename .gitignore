@@ -1,4 +1,7 @@
+forum/settings.py
 .env
 static
 media
 .vscode
+*pyc
+forum/settings.py

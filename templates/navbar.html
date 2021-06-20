@@ -9,7 +9,7 @@
     <ul class="nav nav-pills">
       <li><a href="{% url 'homepage' %}" class="nav-link px-2 link-secondary">Home</a></li>
       <li><a href="{% url 'category_list' %}" class="nav-link px-2 link-dark">Categorias</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark">Equipe</a></li>
+      <li><a href="{% url 'equipe' %}" class="nav-link px-2 link-dark">Equipe</a></li>
     </ul>
 
     {% if not user.is_authenticated  %}
@@ -19,12 +19,12 @@
     </div>
   {% else %}
   <div class="col-md-3 text-end">
-    
-    {% if user.author.prfile_photo %}
     <div class="container">
       {{ user.username }} | 
-      <a>
-        <div class="user" style=" background-image:url('{{ user.author.prfile_photo.url }}')"></div>
+    {% if user.author.profile_photo %}
+    
+      <a href="{% url 'author_detail' user.author.id  %}">
+        <div class="user" style=" background-image:url('{{ user.author.profile_photo.url }}')"></div>
       </a>
       <a class="btn btn-danger"href="{% url 'logout' %}" >Sair</a>
     </div>

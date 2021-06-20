@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'forum.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django',
-        'USER':'root_django',
-        'PASSWORD':'admin123',
-        'HOST':'localhost',
+        'NAME': config('NAME'),
+        'USER': config('USER'),
+        'PASSWORD':config('PASSWORD'),
+        'HOST':config('HOST'),
         'POST':''
     },'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
