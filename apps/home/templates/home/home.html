@@ -19,14 +19,15 @@
         <h6 class="border-bottom pb-2 mb-0">Atualizados Recentemente
           <a class="btn btn-success"style="flex:right; text-align:right;"  href="{% url 'pub_create' %}" >Criar Postagem</a></h6>
         {% for c in list_publication %}
+        <p2 class="col col-lg-2s">{{ c.date_create }}</p2>
             <div class="d-flex text-muted pt-3" style="width: 300px;">
               <div class="col-md-3 text-end">
                   <div class="user" style="background-image:url('{{ c.author.profile_photo.url}}')"></div>
               </div>
               <p class="pb-3 mb-0 small lh-sm border-bottom" style="width:600px;" >
-                  <strong class="d-block text-gray-dark">@{{ c.author }}</strong>
+                  <strong class="d-block text-gray-dark">@{{ c.author }}</strong><p2 style="color:burlywood;" >{{ c.author.description }}</p2>
                   <a href="{% url 'detail_publi' c.id %}" >
-                  {{ c.title }}
+                  {{ c.title }} 
                   </a>
               </p>
             </div>
@@ -52,13 +53,19 @@
         </div>
         
         <small class="d-block text-end mt-3">
-          <a href="#">All suggestions</a>
+          <button class="btn btn-primary" onclick="getPublication()" >Acessar BackEnd</button>
         </small>
       </div>
     </main>
-
-
-
 </div>
-
 {% endblock %}
+
+{%  block script %}
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
+
+<script src="{% static 'js/ajax.js'  %}"></script>
+
+{% endblock  %}

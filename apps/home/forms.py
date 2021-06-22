@@ -49,3 +49,5 @@ class RegisterForm(forms.Form):
         if User.objects.filter(email=self.email).exists():
             return forms.ValidationError('Email já em uso!Tente outro.')
         return self.email
+
+

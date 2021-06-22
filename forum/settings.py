@@ -15,7 +15,6 @@ from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = True
@@ -39,6 +38,9 @@ INSTALLED_APPS = [
     'apps.staff',
     'rest_framework',
     'corsheaders',
+    'bootstrapform',
+    'django_wysiwyg',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +55,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'forum.urls'
+
+
 
 TEMPLATES = [
     {
@@ -137,4 +141,4 @@ CORS_ALLOWED_ORIGINS = [
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'homepage'
-LOGOUT_REDIRECT_URL = ''
+LOGOUT_REDIRECT_URL = 'homepage'

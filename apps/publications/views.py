@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.urls.base import reverse
 from django.core.paginator import Paginator
 from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic.edit import UpdateView
 from .models import Publication, Comentario
 from django.urls import reverse_lazy
 from .forms import ComentarioForm
@@ -10,10 +11,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 #hello
 
-
 class PublicationList(ListView):
     model = Publication
     paginate_by = 2
+
+    def get_queryset(self):
+        return Publication.objects.all().order_by('-id')[:7]
 
 
 class CreatePubli(LoginRequiredMixin ,CreateView):
@@ -26,6 +29,20 @@ class CreatePubli(LoginRequiredMixin ,CreateView):
         obj.author = self.request.user.author
         obj.save()
         return super(CreatePubli, self).form_valid(form)
+
+
+class EditPublication(UpdateView):
+    model = Publication
+    fields = ['title', 'bio', 'category']
+    
+
+    def get_success_url(self):
+        return reverse('detail_publi', args=[self.get_object().id])
+
+    def dispatch(self,*args, **kwargs):
+        if self.request.user == Publication.objects.get(id=kwargs['pk']).author.user:
+            return super(EditPublication, self).dispatch(*args, **kwargs)
+        return HttpResponse('<h3>404</h3>')
 
 
 class PublicationDetail(LoginRequiredMixin, DetailView):

@@ -2,7 +2,12 @@ from django.contrib import admin
 from django.urls import path, include
 from apps.home import urls as home_urls
 from rest_framework import routers
+
+
 from apps.publications.api import viewsets
+from apps.author.api.viewsets import AuthorViewSet
+from .api.viewsets import UserViewSet, GroupViewSet
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import urls as django_urls
@@ -12,6 +17,8 @@ from apps.home.views import Register
 
 router = routers.DefaultRouter()
 router.register(r'publications', viewsets.PublicationViewSet, basename='publications')
+router.register(r'author', AuthorViewSet)
+router.register(r'user', UserViewSet)
 
 
 urlpatterns = [
