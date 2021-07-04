@@ -19,7 +19,8 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = [config('IP'),config('DOMAIN') ,'127.0.0.1', 'localhost']
+# ALLOWED_HOSTS = [config('IP'),config('DOMAIN') ]
+ALLOWED_HOSTS = [] #TODO: em produção mudar para a de cima
 
 
 INSTALLED_APPS = [
@@ -84,7 +85,7 @@ DATABASES = {
         'USER': config('USER'),
         'PASSWORD':config('PASSWORD'),
         'HOST':config('HOST'),
-        'POST':''
+        'PORT':5432
     },'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',

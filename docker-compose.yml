@@ -1,0 +1,22 @@
+version: "3.8"
+
+services: 
+    web:
+        build: .
+        command: python manage.py makemigrations
+        command: python manage.py migrate
+        command: python manage.py runserver 0:9000
+ 
+        volumes:
+            - .:/code
+            - /db.sqlite3
+        ports:
+            - 9000:9000
+    db:
+        image: postgres
+        volumes:
+            - ./data/db:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_DB=local
+            - POSTGRES_USER=ives
+            - POSTGRES_PASSWORD=costa123

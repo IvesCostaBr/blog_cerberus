@@ -8,6 +8,7 @@ from apps.publications.api import viewsets
 from apps.author.api.viewsets import AuthorViewSet
 from .api.viewsets import UserViewSet, GroupViewSet
 
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import urls as django_urls
