@@ -5,3 +5,4 @@ media
 .vscode
 *pyc
 forum/settings.py
+data/
